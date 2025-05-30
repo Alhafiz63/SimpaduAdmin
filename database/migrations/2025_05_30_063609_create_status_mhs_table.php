@@ -11,8 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ruangs', function (Blueprint $table) {
-            $table->id();
+        Schema::create('status_mhs', function (Blueprint $table) {
+            $table->char('id', 1)->primary();
             $table->timestamps();
         });
     }
@@ -22,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('ruangs');
+        Schema::dropIfExists('status_mhs');
     }
 };

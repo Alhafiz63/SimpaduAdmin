@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kurikulums', function (Blueprint $table) {
-            $table->id();
+        Schema::create('prodi', function (Blueprint $table) {
+            $table->tinyInteger('id')->primary();
+            $table->foreignId('id_jurusan')
+                ->constrained('jurusan', 'id')
+                ->onDelete('cascade');
+            $table->string('nama', 100)->unique();
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kurikulums');
+        Schema::dropIfExists('prodi');
     }
 };

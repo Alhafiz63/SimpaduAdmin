@@ -11,8 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('presensi_dsns', function (Blueprint $table) {
-            $table->id();
+        Schema::create('ruang', function (Blueprint $table) {
+            $table->interger('id')->primary();
+            $table->foreignId('id_prodi')
+                ->constrained('prodi', 'id')
+                ->onDelete('cascade');
+            $table->string('nama_ruang', 100)->unique();
             $table->timestamps();
         });
     }
@@ -22,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('presensi_dsns');
+        Schema::dropIfExists('ruang');
     }
 };

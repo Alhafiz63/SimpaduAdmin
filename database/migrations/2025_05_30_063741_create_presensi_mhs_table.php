@@ -12,7 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('presensi_mhs', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('id_presensi_dsn')
+                ->constrained('presensi_dsn', 'id')
+                ->onDelete('cascade');
+            $table->foreignId('id_kelas_mhs')
+                ->constrained('kelas_mhs', 'id')
+                ->onDelete('cascade');
+            $table->time('waktu_presensi');
+            $table->char('status', 1)->comment('0: Tidak Hadir, 1: Hadir, 2: Sakit, 3: Izin');
             $table->timestamps();
         });
     }

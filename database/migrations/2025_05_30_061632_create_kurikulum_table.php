@@ -11,19 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas_mhs', function (Blueprint $table) {
-            $table->bigInteger('id')->primary();
-            $table->foreignId('id_kelas')
-                ->constrained('kelas', 'id')
+        Schema::create('kurikulum', function (Blueprint $table) {
+            $table->integer('id')->primary();
+            $table->foreignId('id_matkul')
+                ->constrained('matkul', 'id')
                 ->onDelete('cascade');
-            $table->tinyInteger('no_absen')->comment('Nomor urut absen dalam kelas');
-            $table->char('nim', 10)->comment('Nomor Induk Mahasiswa');
             $table->foreignId('id_tahun_akd')
                 ->constrained('tahun_akd', 'id')
                 ->onDelete('cascade');
-            $table->tinyInteger('smt');
-            $table->foreignId('id_status_mhs')
-                ->constrained('status_mhs', 'id')
+            $table->foreignId('id_prodi')
+                ->constrained('prodi', 'id')
                 ->onDelete('cascade');
             $table->timestamps();
         });
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas_mhs');
+        Schema::dropIfExists('kurikulum');
     }
 };

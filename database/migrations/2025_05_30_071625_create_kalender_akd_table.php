@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kelas_m_k_s', function (Blueprint $table) {
-            $table->id();
+        Schema::create('kalender_akd', function (Blueprint $table) {
+            $table->int('id')->primary();
+            $table->foreignId('id_tahun_akd')
+                ->constrained('tahun_akd', 'id')
+                ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kelas_m_k_s');
+        Schema::dropIfExists('kalender_akd');
     }
 };
