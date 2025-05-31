@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('presensi_dsn', function (Blueprint $table) {
             $table->integer('id')->primary();
             $table->tinyInteger('pertemuan_ke');
-            $table->foreignId('id_kelas_mk')
-                ->constrained('kelas_mk', 'id')
-                ->onDelete('cascade');
+            $table->integer('id_kelas_mk');
             $table->date('tanggal');
             $table->time('waktu_presensi');
             $table->timestamps();
+
+            $table->foreign('id_kelas_mk')
+                ->references('id')
+                ->on('kelas_mk')
+                ->onDelete('cascade');
         });
     }
 

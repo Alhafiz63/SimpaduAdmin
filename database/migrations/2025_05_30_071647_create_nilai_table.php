@@ -13,15 +13,16 @@ return new class extends Migration
     {
         Schema::create('nilai', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->foreignId('id_kelas_mk')
-                ->constrained('kelas_mk', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_kelas_mhs')
-                ->constrained('kelas_mhs', 'id')
-                ->onDelete('cascade');
+            $table->integer('id_kelas_mk');
+            $table->bigInteger('id_kelas_mhs');
             $table->float('n_angka', 5, 2)->nullable();
             $table->string('n_huruf', 2)->nullable();
             $table->timestamps();
+
+            $table->foreign('id_kelas_mhs')
+                ->references('id')
+                ->on('kelas_mhs')
+                ->onDelete('cascade');
         });
     }
 

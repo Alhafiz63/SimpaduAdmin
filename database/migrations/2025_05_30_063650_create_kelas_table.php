@@ -13,14 +13,19 @@ return new class extends Migration
     {
         Schema::create('kelas', function (Blueprint $table) {
             $table->integer('id')->primary();
-            $table->foreignId('id_tahun_akd')
-                ->constrained('tahun_akd', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_prodi')
-                ->constrained('prodi', 'id')
-                ->onDelete('cascade');
+            $table->char('id_tahun_akd', 5);
+            $table->tinyInteger('id_prodi');
             $table->string('nama', 50);
             $table->timestamps();
+
+            $table->foreign('id_tahun_akd')
+                ->references('id')
+                ->on('tahun_akd')
+                ->onDelete('cascade');
+            $table->foreign('id_prodi')
+                ->references('id')
+                ->on('prodi')
+                ->onDelete('cascade');
         });
     }
 

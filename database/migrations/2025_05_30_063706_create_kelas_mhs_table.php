@@ -13,19 +13,26 @@ return new class extends Migration
     {
         Schema::create('kelas_mhs', function (Blueprint $table) {
             $table->bigInteger('id')->primary();
-            $table->foreignId('id_kelas')
-                ->constrained('kelas', 'id')
-                ->onDelete('cascade');
+            $table->integer('id_kelas');
             $table->tinyInteger('no_absen')->comment('Nomor urut absen dalam kelas');
             $table->char('nim', 10)->comment('Nomor Induk Mahasiswa');
-            $table->foreignId('id_tahun_akd')
-                ->constrained('tahun_akd', 'id')
-                ->onDelete('cascade');
+            $table->string('id_tahun_akd', 5);
             $table->tinyInteger('smt');
-            $table->foreignId('id_status_mhs')
-                ->constrained('status_mhs', 'id')
-                ->onDelete('cascade');
+            $table->char('id_status_mhs', 1);
             $table->timestamps();
+
+            $table->foreign('id_kelas')
+                ->references('id')
+                ->on('kelas')
+                ->onDelete('cascade');
+            $table->foreign('id_tahun_akd')
+                ->references('id')
+                ->on('tahun_akd')
+                ->onDelete('cascade');
+            $table->foreign('id_status_mhs')
+                ->references('id')
+                ->on('status_mhs')
+                ->onDelete('cascade');
         });
     }
 

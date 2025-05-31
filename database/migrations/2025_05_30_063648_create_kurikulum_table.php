@@ -13,16 +13,23 @@ return new class extends Migration
     {
         Schema::create('kurikulum', function (Blueprint $table) {
             $table->integer('id')->primary();
-            $table->foreignId('id_matkul')
-                ->constrained('matkul', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_tahun_akd')
-                ->constrained('tahun_akd', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_prodi')
-                ->constrained('prodi', 'id')
-                ->onDelete('cascade');
+            $table->smallInteger('id_matkul');
+            $table->char('id_tahun_akd', 5);
+            $table->tinyInteger('id_prodi');
             $table->timestamps();
+
+            $table->foreign('id_matkul')
+                ->references('id')
+                ->on('matkul')
+                ->onDelete('cascade');
+            $table->foreign('id_tahun_akd')
+                ->references('id')
+                ->on('tahun_akd')
+                ->onDelete('cascade');
+            $table->foreign('id_prodi')
+                ->references('id')
+                ->on('prodi')
+                ->onDelete('cascade');
         });
     }
 

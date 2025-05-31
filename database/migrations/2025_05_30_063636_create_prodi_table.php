@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('prodi', function (Blueprint $table) {
             $table->tinyInteger('id')->primary();
-            $table->foreignId('id_jurusan')
-                ->constrained('jurusan', 'id')
-                ->onDelete('cascade');
+            $table->tinyInteger('id_jurusan');
             $table->string('nama', 100)->unique();
             $table->timestamps();
+            
+            $table->foreign('id_jurusan')
+                    ->references('id')
+                    ->on('jurusan')
+                    ->onDelete('cascade');
         });
     }
 

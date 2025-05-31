@@ -13,16 +13,24 @@ return new class extends Migration
     {
         Schema::create('kelas_mk', function (Blueprint $table) {
             $table->integer('id')->primary();
-            $table->foreignId('id_kelas')
-                ->constrained('kelas', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_kurikulum')
-                ->constrained('kurikulum', 'id')
-                ->onDelete('cascade');
-            $table->foreignId('id_ruang')
-                ->constrained('ruang', 'id')
-                ->onDelete('cascade');
+            $table->integer('id_kelas');
+            $table->integer('id_kurikulum')
+                ->comment('ID Kurikulum yang digunakan untuk kelas ini');
+            $table->integer('id_ruang');
             $table->timestamps();
+            
+            $table->foreign('id_kelas')
+                ->references('id')
+                ->on('kelas')
+                ->onDelete('cascade');
+            $table->foreign('id_kurikulum')
+                ->references('id')
+                ->on('kurikulum')
+                ->onDelete('cascade');
+                $table->foreign('id_ruang')
+                ->references('id')
+                ->on('ruang')
+                ->onDelete('cascade');
         });
     }
 

@@ -13,13 +13,15 @@ return new class extends Migration
     {
         Schema::create('matkul', function (Blueprint $table) {
             $table->smallInteger('id')->primary();
-            $table->foreignId('id_prodi')
-                ->constrained('prodi', 'id')
-                ->onDelete('cascade');
+            $table->tinyInteger('id_prodi');
             $table->string('nama', 100)->unique();
             $table->float('sks', 5, 2);
             $table->tinyInteger('semester');
             $table->timestamps();
+            $table->foreign('id_prodi')
+                ->references('id')
+                ->on('prodi')
+                ->onDelete('cascade');
         });
     }
 

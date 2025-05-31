@@ -12,11 +12,14 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kalender_akd', function (Blueprint $table) {
-            $table->int('id')->primary();
-            $table->foreignId('id_tahun_akd')
-                ->constrained('tahun_akd', 'id')
-                ->onDelete('cascade');
+            $table->integer('id')->primary();
+            $table->char('id_tahun_akd', 5);
             $table->timestamps();
+
+            $table->foreign('id_tahun_akd')
+                ->references('id')
+                ->on('tahun_akd')
+                ->onDelete('cascade');
         });
     }
 

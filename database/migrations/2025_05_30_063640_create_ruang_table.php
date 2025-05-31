@@ -12,12 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('ruang', function (Blueprint $table) {
-            $table->interger('id')->primary();
-            $table->foreignId('id_prodi')
-                ->constrained('prodi', 'id')
-                ->onDelete('cascade');
+            $table->integer('id')->primary();
+            $table->tinyInteger('id_prodi');
             $table->string('nama_ruang', 100)->unique();
             $table->timestamps();
+
+            $table->foreign('id_prodi')
+                    ->references('id')
+                    ->on('prodi')
+                    ->onDelete('cascade');
         });
     }
 
