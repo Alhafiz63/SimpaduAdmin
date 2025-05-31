@@ -13,12 +13,19 @@ return new class extends Migration
     {
         Schema::create('presensi_mhs', function (Blueprint $table) {
             $table->integer('id_presensi_dsn');
-            $table->bigInteger('id_kelas_mhs');;
+            $table->bigInteger('id_kelas_mhs');
             $table->time('waktu_presensi');
-            $table->char('status', 1)->comment('0: Tidak Hadir, 1: Hadir, 2: Sakit, 3: Izin');
+            $table->char('status', 1)->comment('A: Alpa, H: Hadir, S: Sakit, I: Izin');
             $table->timestamps();
 
-            $table->primary(['id_presensi_dsn', 'id_kelas_mhs'], 'presensi_mhs_primary_key');
+            $table->foreign('id_presensi_dsn')
+                ->references('id')
+                ->on('presensi_dsn')
+                ->onDelete('cascade');
+            $table->foreign('id_kelas_mhs')
+                ->references('id')
+                ->on('kelas_mhs')
+                ->onDelete('cascade');
         });
     }
 

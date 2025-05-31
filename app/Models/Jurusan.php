@@ -9,9 +9,16 @@ class Jurusan extends Model
     //
 
     // add fillable
-    protected $fillable = [];
+    protected $fillable = [
+        'nama_jurusan'
+    ];
     // add guaded
     protected $guarded = ['id'];
     // add hidden
     protected $hidden = ['created_at', 'updated_at'];
+
+    public function prodi()
+    {
+        return $this->hasMany(Prodi::class, 'id_jurusan', 'id');
+    }
 }

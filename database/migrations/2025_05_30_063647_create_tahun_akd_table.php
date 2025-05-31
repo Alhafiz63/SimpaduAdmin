@@ -12,8 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tahun_akd', function (Blueprint $table) {
-            $table->char('id', 5)->primary();
+            $table->char('id', 5)->primary()->autoIncrement();
             $table->string('nama', 100)->unique();
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->enum('status', ['aktif', 'nonaktif'])->default('nonaktif');
             $table->timestamps();
         });
     }

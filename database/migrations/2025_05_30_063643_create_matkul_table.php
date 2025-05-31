@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('matkul', function (Blueprint $table) {
-            $table->smallInteger('id')->primary();
+            $table->smallInteger('id')->primary()->autoIncrement();
             $table->tinyInteger('id_prodi');
             $table->string('nama', 100)->unique();
             $table->float('sks', 5, 2);

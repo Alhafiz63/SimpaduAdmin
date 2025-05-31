@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kelas_mk', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->integer('id')->primary()->autoIncrement();
             $table->integer('id_kelas');
             $table->integer('id_kurikulum')
                 ->comment('ID Kurikulum yang digunakan untuk kelas ini');

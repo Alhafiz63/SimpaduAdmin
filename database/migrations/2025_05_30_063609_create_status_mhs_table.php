@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('status_mhs', function (Blueprint $table) {
             $table->char('id', 1)->primary();
+            $table->string('nama_status', 10)->unique()->comment('Nama status mahasiswa, misalnya: Aktif, SP1, SP2, SP3, Lulus, Terminal');
             $table->timestamps();
         });
     }

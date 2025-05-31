@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('presensi_dsn', function (Blueprint $table) {
-            $table->integer('id')->primary();
+            $table->integer('id')->primary()->autoIncrement();
             $table->tinyInteger('pertemuan_ke');
             $table->integer('id_kelas_mk');
             $table->date('tanggal');

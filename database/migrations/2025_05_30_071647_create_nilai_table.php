@@ -15,10 +15,14 @@ return new class extends Migration
             $table->bigInteger('id')->primary();
             $table->integer('id_kelas_mk');
             $table->bigInteger('id_kelas_mhs');
-            $table->float('n_angka', 5, 2)->nullable();
+            $table->decimal('n_angka', 5, 2)->nullable();
             $table->string('n_huruf', 2)->nullable();
             $table->timestamps();
 
+            $table->foreign('id_kelas_mk')
+                ->references('id')
+                ->on('kelas_mk')
+                ->onDelete('cascade');
             $table->foreign('id_kelas_mhs')
                 ->references('id')
                 ->on('kelas_mhs')
