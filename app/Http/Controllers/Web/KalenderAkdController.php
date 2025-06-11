@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class KelasMKController extends Controller
+class KalenderAkdController extends Controller
 {
     //
 }
