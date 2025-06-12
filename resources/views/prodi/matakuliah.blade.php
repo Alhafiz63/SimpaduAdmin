@@ -347,19 +347,19 @@
         </div>
         <ul class="nav-menu">
             <li>
-                <a href="/prodidashboard">
+                <a href="/prodi/dashboard">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/nilai">
+                <a href="/prodi/nilai">
                     <img src="/images/report.png" alt="Nilai">
                     Nilai
                 </a>
             </li>
             <li>
-                <a href="/kurikulum">
+                <a href="/prodi/kurikulum">
                     <img src="/images/report-analytics.png" alt="Kurikulum">
                     Kurikulum
                 </a>
@@ -374,14 +374,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/matkul" class="active">
+                        <a href="/prodi/matkul" class="active">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Buat Mata Kuliah
                         </a>
                     </li>
                     <li>
-                        <a href="/dosen">
+                        <a href="/prodi/dosen">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Pilih Dosen
@@ -399,14 +399,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/presensi-mahasiswa">
+                        <a href="/prodi/presensi-mahasiswa">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Mahasiswa
                         </a>
                     </li>
                     <li>
-                        <a href="/presensi-dosen">
+                        <a href="/prodi/presensi-dosen">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Dosen
@@ -436,7 +436,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout">
+                    <a href="/login">
                         <img src="/images/logout.png" alt="Keluar">
                         Keluar
                     </a>

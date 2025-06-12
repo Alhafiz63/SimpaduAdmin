@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Presensi Mahasiswa</title>
+    <title>Detail Presensi Mahasiswa</title>
     <style>
         * {
             box-sizing: border-box;
@@ -269,49 +269,156 @@
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
         }
 
-        .presensi-table {
+        .detail-header {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 0;
+        }
+
+        .detail-info {
+            background: none;
+            border-radius: 10px;
+            padding: 0;
+            font-size: 16px;
+            min-width: 340px;
+            box-shadow: none;
+        }
+
+        .detail-info table {
             width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 18px;
         }
 
-        .presensi-table th,
-        .presensi-table td {
-            padding: 12px 10px;
-            text-align: left;
+        .detail-info td {
+            padding: 4px 8px 4px 0;
+            vertical-align: top;
+        }
+
+        .detail-side {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-left: auto;
+        }
+
+        .detail-box {
+            background: #fff;
+            border-radius: 8px;
+            padding: 16px 24px;
+            font-size: 16px;
+            min-width: 180px;
+            text-align: center;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.07);
+        }
+
+        .presensi-list {
+            width: 100%;
+        }
+
+        .presensi-count-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .presensi-count {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             font-size: 15px;
-        }
-
-        .presensi-table th {
+            font-weight: 500;
+            min-width: 36px;
             background: #f5f7fa;
-            font-weight: 700;
-            color: #222;
-            border-bottom: 2px solid #e5e5e5;
+            border-radius: 8px;
+            padding: 8px 12px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
         }
 
-        .presensi-table td {
+        .presensi-hadir .count-label {
+            color: #22c55e;
+        }
+
+        .presensi-sakit .count-label {
+            color: #f59e42;
+        }
+
+        .presensi-ijin .count-label {
+            color: #1669f2;
+        }
+
+        .presensi-alpa .count-label {
+            color: #e74c3c;
+        }
+
+        .count-label {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .count-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .presensi-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 18px 0;
             border-bottom: 1px solid #f0f0f0;
-            color: #222;
         }
 
-        .presensi-table tr:last-child td {
+        .presensi-item:last-child {
             border-bottom: none;
         }
 
-        .presensi-table td.actions {
-            text-align: center;
+        .mhs-info {
+            display: flex;
+            align-items: center;
+            gap: 18px;
         }
 
-        .presensi-table td .lihat-link {
-            color: #1669f2;
-            text-decoration: none;
-            font-weight: 500;
+        .mhs-info img {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .mhs-detail {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .mhs-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: #222;
+        }
+
+        .mhs-nim {
             font-size: 14px;
-            transition: text-decoration 0.2s;
+            color: #666;
         }
 
-        .presensi-table td .lihat-link:hover {
-            text-decoration: underline;
+        .presensi-radio-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .presensi-radio-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 13px;
+            color: #222;
+            gap: 2px;
+        }
+
+        .presensi-radio-label input[type="radio"] {
+            margin-bottom: 2px;
         }
 
         .pagination {
@@ -348,19 +455,19 @@
         </div>
         <ul class="nav-menu">
             <li>
-                <a href="/prodidashboard">
+                <a href="/prodi/dashboard">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/nilai">
+                <a href="/prodi/nilai">
                     <img src="/images/report.png" alt="Nilai">
                     Nilai
                 </a>
             </li>
             <li>
-                <a href="/kurikulum">
+                <a href="/prodi/kurikulum">
                     <img src="/images/report-analytics.png" alt="Kurikulum">
                     Kurikulum
                 </a>
@@ -375,14 +482,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/matkul">
+                        <a href="/prodi/matkul">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Buat Mata Kuliah
                         </a>
                     </li>
                     <li>
-                        <a href="/dosen">
+                        <a href="/prodi/dosen">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Pilih Dosen
@@ -400,14 +507,14 @@
                 </a>
                 <ul class="submenu" style="display:block;">
                     <li>
-                        <a href="/presensi-mahasiswa" class="active">
+                        <a href="/prodi/presensi-mahasiswa" class="active">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Mahasiswa
                         </a>
                     </li>
                     <li>
-                        <a href="/presensi-dosen">
+                        <a href="/prodi/presensi-dosen">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Dosen
@@ -437,7 +544,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout">
+                    <a href="/login">
                         <img src="/images/logout.png" alt="Keluar">
                         Keluar
                     </a>
@@ -447,117 +554,75 @@
     </aside>
 
     <main>
-        <div class="title">Presensi Mahasiswa</div>
+        <div class="title">Detail Presensi Mahasiswa</div>
         <div class="subtitle">Kelola Presensi Mahasiswa dengan Mudah dan Terstruktur</div>
-        <div class="search-box">
-            <input type="text" placeholder="Cari Sesuatu ?" id="searchInput">
-        </div>
-        <div class="action-bar" style="position:relative;">
-            <button id="filterBtn" class="btn">
-                <img src="/images/filter.png" alt="Filter" style="width:18px;height:18px;">
-                Filter
-            </button>
-            <div id="filterDropdown"
-                style="display:none;position:absolute;right:0;top:110%;background:#fff;border:1px solid #ddd;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,0.07);padding:1rem;min-width:220px;z-index:10;">
-                <div style="margin-bottom:1rem;">
-                    <label for="filterKelas" style="font-size:13px;color:#444;">Kelas</label>
-                    <select id="filterKelas"
-                        style="width:100%;padding:6px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
-                        <option value="">Semua Kelas</option>
-                        <option value="TI Axioo 2023">TI Axioo 2023</option>
-                        <option value="TI Reguler 2022">TI Reguler 2022</option>
-                    </select>
+        <div class="presensi-table-container" style="margin-bottom:24px;">
+            <div class="detail-header">
+                <div class="detail-info">
+                    <table>
+                        <tr>
+                            <td>Nama Kelas :</td>
+                            <td><strong>TI Axioo 2023</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Nama Pegawai :</td>
+                            <td>Arifin Noor Asyikin, ST, MT.</td>
+                        </tr>
+                        <tr>
+                            <td>Mata Kuliah :</td>
+                            <td>Logika Sastra</td>
+                        </tr>
+                        <tr>
+                            <td>Kurikulum :</td>
+                            <td>Kurikulum Merdeka</td>
+                        </tr>
+                    </table>
                 </div>
-                <div style="margin-bottom:1rem;">
-                    <label for="filterMatkul" style="font-size:13px;color:#444;">Mata Kuliah</label>
-                    <select id="filterMatkul"
-                        style="width:100%;padding:6px;margin-top:4px;border-radius:5px;border:1px solid #ccc;">
-                        <option value="">Semua Mata Kuliah</option>
-                        <option value="Pemrograman Perangkat Bergerak">Pemrograman Perangkat Bergerak</option>
-                        <option value="Basis Data">Basis Data</option>
-                        <option value="Jaringan Komputer">Jaringan Komputer</option>
-                    </select>
-                </div>
-                <div style="text-align:right;">
-                    <button id="applyFilter" class="btn btn-primary" style="margin-top:8px;">Terapkan</button>
+                <div class="detail-side">
+                    <div class="detail-box">
+                        Pertemuan : <strong>12</strong>
+                    </div>
+                    <div class="detail-box">
+                        Total Kehadiran : <strong>12/23</strong>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="search-box">
+            <input type="text" placeholder="Cari Sesuatu ?" id="searchInput">
+        </div>
         <div class="presensi-table-container">
-            <table class="presensi-table" id="presensiTable">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="checkAll"></th>
-                        <th>Kelas</th>
-                        <th>Mata Kuliah</th>
-                        <th>Pegawai</th>
-                        <th>Pertemuan</th>
-                        <th style="text-align:center;">Aksi</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Axioo 2023</td>
-                        <td>Pemrograman Perangkat Bergerak</td>
-                        <td>ARIFIN NOOR ASYIKIN, ST., MT</td>
-                        <td>Pertemuan 1</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Reguler 2022</td>
-                        <td>Basis Data</td>
-                        <td>RINA SARI, S.Kom., M.Kom</td>
-                        <td>Pertemuan 2</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Axioo 2023</td>
-                        <td>Jaringan Komputer</td>
-                        <td>ARIFIN NOOR ASYIKIN, ST., MT</td>
-                        <td>Pertemuan 3</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Reguler 2022</td>
-                        <td>Pemrograman Perangkat Bergerak</td>
-                        <td>RINA SARI, S.Kom., M.Kom</td>
-                        <td>Pertemuan 4</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Axioo 2023</td>
-                        <td>Basis Data</td>
-                        <td>ARIFIN NOOR ASYIKIN, ST., MT</td>
-                        <td>Pertemuan 5</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><input type="checkbox" class="row-check"></td>
-                        <td>TI Reguler 2022</td>
-                        <td>Jaringan Komputer</td>
-                        <td>RINA SARI, S.Kom., M.Kom</td>
-                        <td>Pertemuan 6</td>
-                        <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="presensi-list" id="presensiList">
+                @for ($i = 0; $i < 7; $i++)
+                    <div class="presensi-item">
+                        <div class="mhs-info">
+                            <img src="/images/admin.png" alt="Foto Mahasiswa">
+                            <div class="mhs-detail">
+                                <span class="mhs-name">Guardian Fuad Verstappen</span>
+                                <span class="mhs-nim">C030323127</span>
+                            </div>
+                        </div>
+                        <div class="presensi-count-group">
+                            <div class="presensi-count presensi-hadir">
+                                <span class="count-label">H</span>
+                                <span class="count-value">12</span>
+                            </div>
+                            <div class="presensi-count presensi-sakit">
+                                <span class="count-label">S</span>
+                                <span class="count-value">2</span>
+                            </div>
+                            <div class="presensi-count presensi-ijin">
+                                <span class="count-label">I</span>
+                                <span class="count-value">1</span>
+                            </div>
+                            <div class="presensi-count presensi-alpa">
+                                <span class="count-label">A</span>
+                                <span class="count-value">3</span>
+                            </div>
+                        </div>
+                    </div>
+                @endfor
+            </div>
         </div>
         <div class="pagination">
             <button disabled>&lt;</button>
@@ -569,93 +634,33 @@
     </main>
 
     <script>
+        // Search Mahasiswa
+        const searchInput = document.getElementById('searchInput');
+        const presensiList = document.getElementById('presensiList');
+        searchInput.addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            Array.from(presensiList.children).forEach(item => {
+                const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
+                const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
+                item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+            });
+        });
+
         // Dropdown sidebar
         document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
             toggle.addEventListener('click', function(e) {
                 e.preventDefault();
-                const li = this.closest('.has-dropdown');
-                li.classList.toggle('open');
-                document.querySelectorAll('.has-dropdown').forEach(function(otherLi) {
-                    if (otherLi !== li) otherLi.classList.remove('open');
+                const parent = this.closest('.has-dropdown');
+                parent.classList.toggle('open');
+                // Optional: tutup dropdown lain
+                document.querySelectorAll('.has-dropdown').forEach(function(item) {
+                    if (item !== parent) item.classList.remove('open');
                 });
             });
-        });
-
-        // Filter logic hanya untuk Kelas dan Mata Kuliah
-        const filterBtn = document.getElementById('filterBtn');
-        const filterDropdown = document.getElementById('filterDropdown');
-        const applyFilter = document.getElementById('applyFilter');
-        const filterKelas = document.getElementById('filterKelas');
-        const filterMatkul = document.getElementById('filterMatkul');
-        const searchInput = document.getElementById('searchInput');
-        const presensiTable = document.getElementById('presensiTable').getElementsByTagName('tbody')[0];
-
-        filterBtn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            filterDropdown.style.display = filterDropdown.style.display === 'block' ? 'none' : 'block';
-        });
-        filterDropdown.addEventListener('click', function(e) {
-            e.stopPropagation();
-        });
-        document.addEventListener('click', function() {
-            filterDropdown.style.display = 'none';
-        });
-
-        function filterPresensi() {
-            const kelas = filterKelas.value.toLowerCase();
-            const matkul = filterMatkul.value.toLowerCase();
-            const search = searchInput.value.toLowerCase();
-            Array.from(presensiTable.rows).forEach(row => {
-                const rowKelas = row.cells[1].textContent.toLowerCase();
-                const rowMatkul = row.cells[2].textContent.toLowerCase();
-                const rowPegawai = row.cells[3].textContent.toLowerCase();
-                const rowPertemuan = row.cells[4].textContent.toLowerCase();
-                let show = true;
-                if (kelas && rowKelas !== kelas) show = false;
-                if (matkul && rowMatkul !== matkul) show = false;
-                if (
-                    search &&
-                    !(
-                        rowKelas.includes(search) ||
-                        rowMatkul.includes(search) ||
-                        rowPegawai.includes(search) ||
-                        rowPertemuan.includes(search)
-                    )
-                ) show = false;
-                row.style.display = show ? '' : 'none';
-            });
-        }
-
-        applyFilter.addEventListener('click', function(e) {
-            e.preventDefault();
-            filterPresensi();
-            filterDropdown.style.display = 'none';
-        });
-
-        searchInput.addEventListener('input', function() {
-            filterPresensi();
-        });
-
-        const checkAll = document.getElementById('checkAll');
-        const rowChecks = document.querySelectorAll('.row-check');
-
-        checkAll.addEventListener('change', function() {
-            rowChecks.forEach(cb => cb.checked = checkAll.checked);
-        });
-
-        rowChecks.forEach(cb => {
-            cb.addEventListener('change', function() {
-                checkAll.checked = Array.from(rowChecks).every(cb => cb.checked);
-            });
-        });
-
-        document.querySelectorAll('.lihat-link').forEach(function(link) {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                window.location.href = '/detail-mahasiswa';
-            });
-        });
+        }); 
     </script>
+
+
 </body>
 
 </html>

@@ -512,19 +512,19 @@
 
         <ul class="nav-menu">
             <li>
-                <a href="/dashboard" class="active">
+                <a href="/prodi/dashboard" class="active">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/nilai">
+                <a href="/prodi/nilai">
                     <img src="/images/report.png" alt="Nilai">
                     Nilai
                 </a>
             </li>
             <li>
-                <a href="/kurikulum">
+                <a href="/prodi/kurikulum">
                     <img src="/images/report-analytics.png" alt="Kurikulum">
                     Kurikulum
                 </a>
@@ -539,14 +539,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/matkul" class="{{ request()->is('buat-mata-kuliah') ? 'active' : '' }}">
+                        <a href="/prodi/matkul" class="{{ request()->is('buat-mata-kuliah') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Buat Mata Kuliah
                         </a>
                     </li>
                     <li>
-                        <a href="/dosen" class="{{ request()->is('dosen') ? 'active' : '' }}">
+                        <a href="/prodi/dosen" class="{{ request()->is('dosen') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Pilih Dosen
@@ -564,14 +564,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/presensi-mahasiswa" class="{{ request()->is('presensi-mahasiswa') ? 'active' : '' }}">
+                        <a href="/prodi/presensi-mahasiswa" class="{{ request()->is('presensi-mahasiswa') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Mahasiswa
                         </a>
                     </li>
                     <li>
-                        <a href="/presensi-dosen" class="{{ request()->is('presensi-dosen') ? 'active' : '' }}">
+                        <a href="/prodi/presensi-dosen" class="{{ request()->is('presensi-dosen') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Dosen
@@ -602,7 +602,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="/logout">
+                    <a href="/login">
                         <img src="/images/logout.png" alt="Keluar">
                         Keluar
                     </a>

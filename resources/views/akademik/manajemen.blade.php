@@ -479,25 +479,25 @@
 
         <ul class="nav-menu">
             <li>
-                <a href="/akademikdashboard">
+                <a href="/akademik/dashboard">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/manajemenkelas" class="active">
+                <a href="/akademik/manajemenkelas" class="active">
                     <img src="/images/classroom.png" alt="Manajemen Kelas">
                     Manajemen Kelas
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa">
+                <a href="/akademik/mahasiswa">
                     <img src="/images/profile.png" alt="Mahasiswa">
                     Mahasiswa
                 </a>
             </li>
             <li>
-                <a href="/akademik">
+                <a href="/akademik/akademik">
                     <img src="/images/calendar-event.png" alt="Tahun Akademik">
                     Tahun Akademik
                 </a>
@@ -571,7 +571,7 @@
                         <img src="/images/mahasiswa.png" alt="Student 2" class="stack-image">
                         <img src="/images/mahasiswa.png" alt="Student 3" class="stack-image">
                     </div>
-                    <a href="/detail" class="detail-link">Lihat Detail</a>
+                    <a href="/akademik/detail" class="detail-link">Lihat Detail</a>
                 </div>
             </div>
             <div class="card">
@@ -583,7 +583,7 @@
                         <img src="/images/mahasiswa.png" alt="Student 2" class="stack-image">
                         <img src="/images/mahasiswa.png" alt="Student 3" class="stack-image">
                     </div>
-                    <a href="/detail" class="detail-link">Lihat Detail</a>
+                    <a href="/akademik/detail" class="detail-link">Lihat Detail</a>
                 </div>
             </div>
         </div>
