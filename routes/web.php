@@ -46,6 +46,10 @@ Route::get('/detail-mahasiswa', function () {
 Route::get('/presensi-dosen', function () {
     return view('prodi.presensidosen');
 });
+
+Route::get('/detail-kurikulum', function () {
+    return view('prodi.detailkurikulum');
+});
 });
 
 
