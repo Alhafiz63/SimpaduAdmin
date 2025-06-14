@@ -40,4 +40,15 @@ return [
         'redirect' => env('GOOGLE_REDIRECT_URI')
     ],
 
+    'admin_origin' => env('ADMIN_ORIGIN', 'https://ti054e01.agussbn.my.id'),
+
+    'urls' => [
+        'dosen_service' => env('DOSEN_SERVICE_URL', 'https://ti054e02.agussbn.my.id/api'),
+        'mahasiswa_service' => env('MAHASISWA_SERVICE_URL', 'https://ti054e03.agussbn.my.id/api'),
+    ],
+
+    'tokens' => [
+        'dosen_service' => env('DOSEN_SERVICE_TOKEN'),
+        'mahasiswa_service' => env('MAHASISWA_SERVICE_TOKEN'),
+    ],
 ];
