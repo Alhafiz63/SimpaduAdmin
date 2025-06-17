@@ -338,25 +338,25 @@
         </div>
         <ul class="nav-menu">
             <li>
-                <a href="/akademikdashboard">
+                <a href="/akademik/dashboard">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
             </li>
             <li>
-                <a href="/manajemenkelas" class="active">
+                <a href="/akademik/manajemenkelas" class="active">
                     <img src="/images/classroom.png" alt="Manajemen Kelas">
                     Manajemen Kelas
                 </a>
             </li>
             <li>
-                <a href="/mahasiswa">
+                <a href="/akademik/mahasiswa">
                     <img src="/images/profile.png" alt="Mahasiswa">
                     Mahasiswa
                 </a>
             </li>
             <li>
-                <a href="/akademik">
+                <a href="/akademik/akademik">
                     <img src="/images/calendar-event.png" alt="Tahun Akademik">
                     Tahun Akademik
                 </a>
