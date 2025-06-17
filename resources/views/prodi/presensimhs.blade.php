@@ -503,7 +503,7 @@
                         <td>ARIFIN NOOR ASYIKIN, ST., MT</td>
                         <td>Pertemuan 1</td>
                         <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
+                            <a href="/detail-mahasiswa" class="lihat-link">Lihat Mahasiswa</a>
                         </td>
                     </tr>
                     <tr>
@@ -533,7 +533,7 @@
                         <td>RINA SARI, S.Kom., M.Kom</td>
                         <td>Pertemuan 4</td>
                         <td class="actions">
-                            <a href="#" class="lihat-link">Lihat Mahasiswa</a>
+                            <a href="/detail-mahasiswa" class="lihat-link">Lihat Mahasiswa</a>
                         </td>
                     </tr>
                     <tr>
@@ -652,7 +652,7 @@
         document.querySelectorAll('.lihat-link').forEach(function(link) {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
-                window.location.href = '/detail-mahasiswa';
+                window.location.href = 'prodi/detail-mahasiswa';
             });
         });
     </script>

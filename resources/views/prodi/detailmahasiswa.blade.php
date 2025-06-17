@@ -408,7 +408,7 @@
         </div>
         <ul class="nav-menu">
             <li>
-                <a href="/prodidashboard">
+                <a href="/prodi">
                     <img src="/images/dashboard.png" alt="Dashboard">
                     Dashboard
                 </a>
@@ -426,7 +426,7 @@
                 </a>
             </li>
             <li class="has-dropdown">
-                <a href="#mata-kuliah" class="dropdown-toggle">
+                <a href="/mata-kuliah" class="dropdown-toggle">
                     <span style="display: flex; align-items: center;">
                         <img src="/images/folder.png" alt="Mata Kuliah">
                         Mata Kuliah
@@ -435,7 +435,7 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="/matkul">
+                        <a href="/mata-kuliah/create">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Buat Mata Kuliah
@@ -451,7 +451,7 @@
                 </ul>
             </li>
             <li class="has-dropdown open">
-                <a href="#presensi" class="dropdown-toggle active">
+                <a href="/presensi" class="dropdown-toggle active">
                     <span style="display: flex; align-items: center;">
                         <img src="/images/person-badge.png" alt="Presensi">
                         Presensi

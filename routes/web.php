@@ -15,7 +15,7 @@ Route::get('/', function () {
 });
 
 route::prefix('prodi')->group(function () {
-Route::get('/dashboard', function () {
+Route::get('/', function () {
     return view('prodi.dashboard');
 });
 
