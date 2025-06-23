@@ -9,8 +9,8 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/user/{id}', [AuthController::class, 'show']);
-// })->middleware('auth:sanctum');
 
 
-// Route::post('/login', [AuthController::class, 'login']);
+Route::post('/login', [AuthController::class, 'login']);

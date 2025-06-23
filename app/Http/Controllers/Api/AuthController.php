@@ -13,35 +13,41 @@ class AuthController extends Controller
 {
     //login
     public function login(LoginRequest $request)
-    {
-        //validate dengan Auth::attempt
-        if (Auth::attempt($request->only('email', 'password'))) {
-            //jika berhasil buat token
-            $user = User::where('email', $request->email)->first();
-            //token lama dihapus
-            $user->tokens()->delete();
-            //token baru di create
+{
+    if (Auth::attempt($request->only('email', 'password'))) {
+        $user = User::where('email', $request->email)->first();
+
+        // Cek token dengan nama khusus role
+        $tokenName = 'token_' . strtolower(str_replace(' ', '_', $user->role));
+
+        // Cari token lama berdasarkan nama
+        $existingToken = $user->tokens()->where('name', $tokenName)->first();
+
+        if (!$existingToken) {
+            // Buat token baru kalau belum ada
             $abilities = $user->getAllPermissions()->pluck('name')->toArray();
-            // Filter abilities containing ':' and cut any string after '_'
             $abilities = array_map(function ($ability) {
                 return explode('_', $ability)[0];
             }, array_filter($abilities, function ($ability) {
                 return strpos($ability, ':') !== false;
             }));
-            //create token with abilities
-            $token = $user->createToken('token', $abilities)->plainTextToken;
 
-            return new LoginResource([
-                'token' => $token,
-                'user' => $user
-            ]);
+            $token = $user->createToken($tokenName, $abilities)->plainTextToken;
         } else {
-            //jika gagal kirim response error
-            return response()->json([
-                'message' => 'Invalid Credentials'
-            ], 401);
+            // Gunakan token yang sudah ada
+            $token = $existingToken->plainTextToken ?? $existingToken->accessToken; // fallback
         }
+
+        return new LoginResource([
+            'token' => $token,
+            'user' => $user
+        ]);
     }
+
+    return response()->json([
+        'message' => 'Invalid Credentials'
+    ], 401);
+}
 
     //register
     // public function register(RegisterRequest $request)

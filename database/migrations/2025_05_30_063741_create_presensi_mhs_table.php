@@ -15,7 +15,8 @@ return new class extends Migration
             $table->integer('id_presensi_dsn');
             $table->bigInteger('id_kelas_mhs');
             $table->time('waktu_presensi');
-            $table->char('status', 1)->comment('A: Alpa, H: Hadir, S: Sakit, I: Izin');
+            $table->date('tanggal');
+            $table->enum('status', ['A', 'H', 'S', 'I']);
             $table->timestamps();
 
             $table->foreign('id_presensi_dsn')

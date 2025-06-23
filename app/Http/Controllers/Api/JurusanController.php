@@ -13,6 +13,15 @@ class JurusanController extends Controller
         return response()->json(Jurusan::all());
     }
 
+    public function show($id)
+    {
+        $jurusan = Jurusan::find($id);
+        if (! $jurusan) {
+            return response()->json(['message' => 'Jurusan Belum Tersedia.'], 404);
+        }
+        return response()->json($jurusan);
+    }
+
     // POST /jurusan/create
     public function store(Request $request)
     {
@@ -21,9 +30,8 @@ class JurusanController extends Controller
         ]);
 
         $jurusan = Jurusan::create($validated);
-
         return response()->json([
-            'message' => 'Jurusan created successfully.',
+            'message' => 'Jurusan Berhasil Dibuat.',
             'data' => $jurusan
         ], 201);
     }
@@ -34,7 +42,7 @@ class JurusanController extends Controller
         $jurusan = Jurusan::find($id);
 
         if (! $jurusan) {
-            return response()->json(['message' => 'Jurusan not found.'], 404);
+            return response()->json(['message' => 'Jurusan Belum Tersedia.'], 404);
         }
 
         $validated = $request->validate([
@@ -44,22 +52,22 @@ class JurusanController extends Controller
         $jurusan->update($validated);
 
         return response()->json([
-            'message' => 'Jurusan updated successfully.',
+            'message' => 'Data Jurusan Berhasil diubah.',
             'data' => $jurusan
         ]);
     }
 
     //Destroy /
- public function destroy($id)
+public function destroy($id)
 {
     $jurusan = Jurusan::find($id);
 
     if (! $jurusan) {
-        return response()->json(['message' => 'Jurusan not found.'], 404);
+        return response()->json(['message' => 'Jurusan Belum Tersedia.'], 404);
     }
 
     $jurusan->delete();
 
-    return response()->json(['message' => 'Jurusan deleted successfully.']);
+    return response()->json(['message' => 'Jurusan Berhasil Dihapus.']);
 }
 }
