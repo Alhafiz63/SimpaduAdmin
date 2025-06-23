@@ -260,6 +260,19 @@
             background: #0057d8;
         }
 
+        .lihat-mahasiswa-link {
+            color: #1669f2;
+            text-decoration: none;
+            font-weight: 500;
+            transition: text-decoration-color 0.2s;
+            text-underline-offset: 3px;
+        }
+
+        .lihat-mahasiswa-link:hover {
+            text-decoration: underline;
+            text-decoration-color: #1669f2;
+        }
+
         /* Table Presensi Mahasiswa */
         .presensi-table-container {
             background: #fff;
@@ -450,7 +463,7 @@
     <aside>
         <div class="user-card">
             <img src="/images/admin.png" alt="Admin Akademik">
-            <strong>Admin Akademik</strong>
+            <strong>Admin Prodi</strong>
             <small>adminakademik@example.com</small>
         </div>
         <ul class="nav-menu">
@@ -554,77 +567,54 @@
     </aside>
 
     <main>
-        <div class="title">Detail Presensi Mahasiswa</div>
+        <div class="title">Presensi Mahasiswa</div>
         <div class="subtitle">Kelola Presensi Mahasiswa dengan Mudah dan Terstruktur</div>
-        <div class="presensi-table-container" style="margin-bottom:24px;">
-            <div class="detail-header">
-                <div class="detail-info">
-                    <table>
-                        <tr>
-                            <td>Nama Kelas :</td>
-                            <td><strong>TI Axioo 2023</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Pegawai :</td>
-                            <td>Arifin Noor Asyikin, ST, MT.</td>
-                        </tr>
-                        <tr>
-                            <td>Mata Kuliah :</td>
-                            <td>Logika Sastra</td>
-                        </tr>
-                        <tr>
-                            <td>Kurikulum :</td>
-                            <td>Kurikulum Merdeka</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="detail-side">
-                    <div class="detail-box">
-                        Pertemuan : <strong>12</strong>
-                    </div>
-                    <div class="detail-box">
-                        Total Kehadiran : <strong>12/23</strong>
-                    </div>
-                </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
+            <div class="search-box" style="flex:1;max-width:340px;">
+                <input type="text" placeholder="Cari Sesuatu ?" id="searchInput">
             </div>
         </div>
-        <div class="search-box">
-            <input type="text" placeholder="Cari Sesuatu ?" id="searchInput">
+        <div class="presensi-table-container" style="margin-top:18px;padding:0;">
+            <table
+                style="width:100%;border-collapse:separate;border-spacing:0;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,0.04);">
+                <thead>
+                    <tr style="background:#f9f9f9;">
+                        <th style="padding:14px 8px;text-align:center;border-bottom:1px solid #eee;"><input
+                                type="checkbox" id="selectAll"></th>
+                        <th style="padding:14px 8px;text-align:left;border-bottom:1px solid #eee;">Kelas</th>
+                        <th style="padding:14px 8px;text-align:left;border-bottom:1px solid #eee;">Mata Kuliah</th>
+                        <th style="padding:14px 8px;text-align:left;border-bottom:1px solid #eee;">Pegawai</th>
+                        <th style="padding:14px 8px;text-align:left;border-bottom:1px solid #eee;">Pertemuan</th>
+                        <th style="padding:14px 8px;text-align:left;border-bottom:1px solid #eee;">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="presensiTableBody">
+                    @for ($i = 0; $i < 8; $i++)
+                        <tr style="border-bottom:1px solid #f0f0f0;">
+                            <td style="padding:12px 8px;text-align:center;">
+                                <input type="checkbox" class="row-checkbox">
+                            </td>
+                            <td style="padding:12px 8px;vertical-align:middle;color:#222;font-size:15px;">
+                                TI Axioo 2023
+                            </td>
+                            <td style="padding:12px 8px;vertical-align:middle;color:#222;font-size:15px;">
+                                Pemrograman Perangkat Bergerak
+                            </td>
+                            <td style="padding:12px 8px;vertical-align:middle;color:#222;font-size:15px;">
+                                ARIFIN NOOR ASYIKIN, ST, MT
+                            </td>
+                            <td style="padding:12px 8px;vertical-align:middle;color:#222;font-size:15px;">
+                                Pertemuan 1
+                            </td>
+                            <td style="padding:12px 8px;vertical-align:middle;">
+                                <a href="/prodi/detail-mahasiswa" class="lihat-mahasiswa-link">Lihat Mahasiswa</a>
+                            </td>
+                        </tr>
+                    @endfor
+                </tbody>
+            </table>
         </div>
-        <div class="presensi-table-container">
-            <div class="presensi-list" id="presensiList">
-                @for ($i = 0; $i < 7; $i++)
-                    <div class="presensi-item">
-                        <div class="mhs-info">
-                            <img src="/images/admin.png" alt="Foto Mahasiswa">
-                            <div class="mhs-detail">
-                                <span class="mhs-name">Guardian Fuad Verstappen</span>
-                                <span class="mhs-nim">C030323127</span>
-                            </div>
-                        </div>
-                        <div class="presensi-count-group">
-                            <div class="presensi-count presensi-hadir">
-                                <span class="count-label">H</span>
-                                <span class="count-value">12</span>
-                            </div>
-                            <div class="presensi-count presensi-sakit">
-                                <span class="count-label">S</span>
-                                <span class="count-value">2</span>
-                            </div>
-                            <div class="presensi-count presensi-ijin">
-                                <span class="count-label">I</span>
-                                <span class="count-value">1</span>
-                            </div>
-                            <div class="presensi-count presensi-alpa">
-                                <span class="count-label">A</span>
-                                <span class="count-value">3</span>
-                            </div>
-                        </div>
-                    </div>
-                @endfor
-            </div>
-        </div>
-        <div class="pagination">
+        <div class="pagination" style="margin-top:12px;">
             <button disabled>&lt;</button>
             <button class="active">1</button>
             <button>2</button>
@@ -636,13 +626,23 @@
     <script>
         // Search Mahasiswa
         const searchInput = document.getElementById('searchInput');
-        const presensiList = document.getElementById('presensiList');
+        const presensiTableBody = document.getElementById('presensiTableBody');
         searchInput.addEventListener('input', function() {
             const search = this.value.toLowerCase();
-            Array.from(presensiList.children).forEach(item => {
-                const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
-                const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
-                item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+            Array.from(presensiTableBody.children).forEach(row => {
+                const kelas = row.children[1].textContent.toLowerCase();
+                const matkul = row.children[2].textContent.toLowerCase();
+                const pegawai = row.children[3].textContent.toLowerCase();
+                row.style.display = (kelas.includes(search) || matkul.includes(search) || pegawai.includes(
+                    search)) ? '' : 'none';
+            });
+        });
+
+        // Select All Checkbox
+        const selectAll = document.getElementById('selectAll');
+        selectAll.addEventListener('change', function() {
+            document.querySelectorAll('.row-checkbox').forEach(cb => {
+                cb.checked = this.checked;
             });
         });
 
@@ -652,15 +652,12 @@
                 e.preventDefault();
                 const parent = this.closest('.has-dropdown');
                 parent.classList.toggle('open');
-                // Optional: tutup dropdown lain
                 document.querySelectorAll('.has-dropdown').forEach(function(item) {
                     if (item !== parent) item.classList.remove('open');
                 });
             });
-        }); 
+        });
     </script>
-
-
 </body>
 
 </html>

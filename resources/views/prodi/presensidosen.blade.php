@@ -357,7 +357,7 @@
         <!-- ...sidebar sama seperti presensimhs.blade.php... -->
         <div class="user-card">
             <img src="/images/admin.png" alt="Admin Akademik">
-            <strong>Admin Akademik</strong>
+            <strong>Admin Prodi</strong>
             <small>adminakademik@example.com</small>
         </div>
         <ul class="nav-menu">

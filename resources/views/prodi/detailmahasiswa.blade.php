@@ -314,6 +314,53 @@
             width: 100%;
         }
 
+        .presensi-count-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .presensi-count {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 500;
+            min-width: 36px;
+            background: #f5f7fa;
+            border-radius: 8px;
+            padding: 8px 12px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        .presensi-hadir .count-label {
+            color: #22c55e;
+        }
+
+        .presensi-sakit .count-label {
+            color: #f59e42;
+        }
+
+        .presensi-ijin .count-label {
+            color: #1669f2;
+        }
+
+        .presensi-alpa .count-label {
+            color: #e74c3c;
+        }
+
+        .count-label {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .count-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
         .presensi-item {
             display: flex;
             align-items: center;
@@ -403,7 +450,7 @@
     <aside>
         <div class="user-card">
             <img src="/images/admin.png" alt="Admin Akademik">
-            <strong>Admin Akademik</strong>
+            <strong>Admin Prodi</strong>
             <small>adminakademik@example.com</small>
         </div>
         <ul class="nav-menu">
@@ -547,29 +594,33 @@
         <div class="presensi-table-container">
             <div class="presensi-list" id="presensiList">
                 @for ($i = 0; $i < 7; $i++)
-                <div class="presensi-item">
-                    <div class="mhs-info">
-                        <img src="/images/admin.png" alt="Foto Mahasiswa">
-                        <div class="mhs-detail">
-                            <span class="mhs-name">Guardian Fuad Verstappen</span>
-                            <span class="mhs-nim">C030323127</span>
+                    <div class="presensi-item">
+                        <div class="mhs-info">
+                            <img src="/images/admin.png" alt="Foto Mahasiswa">
+                            <div class="mhs-detail">
+                                <span class="mhs-name">Guardian Fuad Verstappen</span>
+                                <span class="mhs-nim">C030323127</span>
+                            </div>
+                        </div>
+                        <div class="presensi-count-group">
+                            <div class="presensi-count presensi-hadir">
+                                <span class="count-label">H</span>
+                                <span class="count-value">12</span>
+                            </div>
+                            <div class="presensi-count presensi-sakit">
+                                <span class="count-label">S</span>
+                                <span class="count-value">2</span>
+                            </div>
+                            <div class="presensi-count presensi-ijin">
+                                <span class="count-label">I</span>
+                                <span class="count-value">1</span>
+                            </div>
+                            <div class="presensi-count presensi-alpa">
+                                <span class="count-label">A</span>
+                                <span class="count-value">3</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="presensi-radio-group">
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="H">
-                            <span>H</span>
-                        </label>
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="S">
-                            <span>S</span>
-                        </label>
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="I">
-                            <span>I</span>
-                        </label>
-                    </div>
-                </div>
                 @endfor
             </div>
         </div>
@@ -583,20 +634,33 @@
     </main>
 
     <script>
-    // Search Mahasiswa
-    const searchInput = document.getElementById('searchInput');
-    const presensiList = document.getElementById('presensiList');
-    searchInput.addEventListener('input', function() {
-        const search = this.value.toLowerCase();
-        Array.from(presensiList.children).forEach(item => {
-            const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
-            const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
-            item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+        // Search Mahasiswa
+        const searchInput = document.getElementById('searchInput');
+        const presensiList = document.getElementById('presensiList');
+        searchInput.addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            Array.from(presensiList.children).forEach(item => {
+                const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
+                const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
+                item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+            });
         });
-    });
 
-   
-</script>
+        // Dropdown sidebar
+        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.closest('.has-dropdown');
+                parent.classList.toggle('open');
+                // Optional: tutup dropdown lain
+                document.querySelectorAll('.has-dropdown').forEach(function(item) {
+                    if (item !== parent) item.classList.remove('open');
+                });
+            });
+        }); 
+    </script>
+
 
 </body>
+
 </html>
