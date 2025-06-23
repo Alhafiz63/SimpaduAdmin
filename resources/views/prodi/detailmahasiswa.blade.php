@@ -314,6 +314,53 @@
             width: 100%;
         }
 
+        .presensi-count-group {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .presensi-count {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 15px;
+            font-weight: 500;
+            min-width: 36px;
+            background: #f5f7fa;
+            border-radius: 8px;
+            padding: 8px 12px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+        }
+
+        .presensi-hadir .count-label {
+            color: #22c55e;
+        }
+
+        .presensi-sakit .count-label {
+            color: #f59e42;
+        }
+
+        .presensi-ijin .count-label {
+            color: #1669f2;
+        }
+
+        .presensi-alpa .count-label {
+            color: #e74c3c;
+        }
+
+        .count-label {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+
+        .count-value {
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
         .presensi-item {
             display: flex;
             align-items: center;
@@ -403,7 +450,7 @@
     <aside>
         <div class="user-card">
             <img src="/images/admin.png" alt="Admin Akademik">
-            <strong>Admin Akademik</strong>
+            <strong>Admin Prodi</strong>
             <small>adminakademik@example.com</small>
         </div>
         <ul class="nav-menu">
@@ -515,37 +562,46 @@
     </aside>
 
     <main>
-        <div class="title">Detail Presensi Mahasiswa</div>
-        <div class="subtitle">Kelola Presensi Mahasiswa dengan Mudah dan Terstruktur</div>
-        <div class="presensi-table-container" style="margin-bottom:24px;">
-            <div class="detail-header">
-                <div class="detail-info">
-                    <table>
-                        <tr>
-                            <td>Nama Kelas :</td>
-                            <td><strong>TI Axioo 2023</strong></td>
-                        </tr>
-                        <tr>
-                            <td>Nama Pegawai :</td>
-                            <td>Arifin Noor Asyikin, ST, MT.</td>
-                        </tr>
-                        <tr>
-                            <td>Mata Kuliah :</td>
-                            <td>Logika Sastra</td>
-                        </tr>
-                        <tr>
-                            <td>Kurikulum :</td>
-                            <td>Kurikulum Merdeka</td>
-                        </tr>
-                    </table>
+        <div class="title" style="margin-bottom:0;">TI Axioo 2023</div>
+        <div style="display: flex; gap: 24px; margin-bottom: 24px; align-items: flex-start;">
+            <div
+                style="background:#fff;border-radius:10px;padding:24px 32px;min-width:340px;box-shadow:0 1px 4px rgba(0,0,0,0.07);">
+                <table style="width:auto;">
+                    <tr>
+                        <td style="padding:4px 12px 4px 0;color:#666;">Nama Pegawai :</td>
+                        <td style="font-weight:600;color:#222;">Arifin Noor Asyikin, ST, MT.</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:4px 12px 4px 0;color:#666;">Mata Kuliah :</td>
+                        <td style="color:#222;">Pemrograman Perangkat Bergerak</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:4px 12px 4px 0;color:#666;">Kurikulum :</td>
+                        <td style="color:#222;">Kurikulum Merdeka</td>
+                    </tr>
+                    <tr>
+                        <td style="padding:4px 12px 4px 0;color:#666;">Pertemuan :</td>
+                        <td style="color:#222;">1</td>
+                    </tr>
+                </table>
+            </div>
+            <div
+                style="background:#fff;border-radius:8px;padding:50px 14px;display:flex;gap:20px;align-items:center;box-shadow:0 1px 4px rgba(0,0,0,0.07);min-width:260px;max-height:54px;position:relative;left:0;">
+                <div style="text-align:center;min-width:48px;">
+                    <div style="font-size:12px;color:#22c55e;font-weight:600;">Hadir</div>
+                    <div style="font-size:12px;color:#222;">23 dari 23</div>
                 </div>
-                <div class="detail-side">
-                    <div class="detail-box">
-                        Pertemuan : <strong>12</strong>
-                    </div>
-                    <div class="detail-box">
-                        Total Kehadiran : <strong>12/23</strong>
-                    </div>
+                <div style="text-align:center;min-width:48px;">
+                    <div style="font-size:12px;color:#f59e42;font-weight:600;">Sakit</div>
+                    <div style="font-size:12px;color:#222;">0 dari 23</div>
+                </div>
+                <div style="text-align:center;min-width:48px;">
+                    <div style="font-size:12px;color:#1669f2;font-weight:600;">Ijin</div>
+                    <div style="font-size:12px;color:#222;">0 dari 23</div>
+                </div>
+                <div style="text-align:center;min-width:48px;">
+                    <div style="font-size:12px;color:#e74c3c;font-weight:600;">Tidak Hadir</div>
+                    <div style="font-size:12px;color:#222;">0 dari 23</div>
                 </div>
             </div>
         </div>
@@ -555,29 +611,33 @@
         <div class="presensi-table-container">
             <div class="presensi-list" id="presensiList">
                 @for ($i = 0; $i < 7; $i++)
-                <div class="presensi-item">
-                    <div class="mhs-info">
-                        <img src="/images/admin.png" alt="Foto Mahasiswa">
-                        <div class="mhs-detail">
-                            <span class="mhs-name">Guardian Fuad Verstappen</span>
-                            <span class="mhs-nim">C030323127</span>
+                    <div class="presensi-item">
+                        <div class="mhs-info">
+                            <img src="/images/admin.png" alt="Foto Mahasiswa">
+                            <div class="mhs-detail">
+                                <span class="mhs-name">Guardian Fuad Verstappen</span>
+                                <span class="mhs-nim">C030323127</span>
+                            </div>
+                        </div>
+                        <div class="presensi-radio-group">
+                            <label class="presensi-radio-label" style="color:#22c55e;">
+                                <input type="radio" name="presensi{{ $i }}" value="H" disabled>
+                                H
+                            </label>
+                            <label class="presensi-radio-label" style="color:#f59e42;">
+                                <input type="radio" name="presensi{{ $i }}" value="S" disabled>
+                                S
+                            </label>
+                            <label class="presensi-radio-label" style="color:#1669f2;">
+                                <input type="radio" name="presensi{{ $i }}" value="I" disabled>
+                                I
+                            </label>
+                            <label class="presensi-radio-label" style="color:#e74c3c;">
+                                <input type="radio" name="presensi{{ $i }}" value="A" disabled>
+                                A
+                            </label>
                         </div>
                     </div>
-                    <div class="presensi-radio-group">
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="H">
-                            <span>H</span>
-                        </label>
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="S">
-                            <span>S</span>
-                        </label>
-                        <label class="presensi-radio-label">
-                            <input type="radio" name="presensi{{$i}}" value="I">
-                            <span>I</span>
-                        </label>
-                    </div>
-                </div>
                 @endfor
             </div>
         </div>
@@ -591,20 +651,34 @@
     </main>
 
     <script>
-    // Search Mahasiswa
-    const searchInput = document.getElementById('searchInput');
-    const presensiList = document.getElementById('presensiList');
-    searchInput.addEventListener('input', function() {
-        const search = this.value.toLowerCase();
-        Array.from(presensiList.children).forEach(item => {
-            const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
-            const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
-            item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+        // Search Mahasiswa
+        const searchInput = document.getElementById('searchInput');
+        const presensiList = document.getElementById('presensiList');
+        searchInput.addEventListener('input', function() {
+            const search = this.value.toLowerCase();
+            Array.from(presensiList.children).forEach(item => {
+                const nama = item.querySelector('.mhs-name').textContent.toLowerCase();
+                const nim = item.querySelector('.mhs-nim').textContent.toLowerCase();
+                item.style.display = (nama.includes(search) || nim.includes(search)) ? '' : 'none';
+            });
         });
-    });
 
-   
-</script>
+        // Dropdown sidebar
+        document.querySelectorAll('.dropdown-toggle').forEach(function(toggle) {
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                const parent = this.closest('.has-dropdown');
+                parent.classList.toggle('open');
+                // Optional: tutup dropdown lain
+                document.querySelectorAll('.has-dropdown').forEach(function(item) {
+                    if (item !== parent) item.classList.remove('open');
+                });
+            });
+        });
+    </script>
+
 
 </body>
+
 </html>
+o
