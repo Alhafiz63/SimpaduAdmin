@@ -10,7 +10,7 @@ return [
 
     'paths' => ['api/*', 'sanctum/csrf-cookie'],
 
-    'allowed_methods' => ['*'],
+    'allowed_methods' => ['GET, POST, PUT'],
 
     'allowed_origins' => ['https://ti054e02.agussbn.my.id', 'https://ti054e03.agussbn.my.id'], // <- ganti dengan domain tertentu untuk keamanan
 
