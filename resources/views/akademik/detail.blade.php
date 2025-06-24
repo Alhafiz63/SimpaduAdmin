@@ -390,7 +390,7 @@
                 <div>Program Studi: <strong>Sistem Informatika</strong></div>
             </div>
             <div class="action-buttons">
-                <button title="Edit">
+                <button class="btn-edit" title="Edit">
                     <img src="/images/edit.png" width="24">
                 </button>
                 <button title="Hapus">
@@ -497,8 +497,10 @@
                     <div id="multiselect-container"
                         style="border:1px solid #ccc;border-radius:6px;padding:8px 12px;min-height:44px;cursor:pointer;position:relative;background:#fff;display:flex;align-items:center;">
                         <span id="multiselect-placeholder" style="color:#888;">Pilih Mahasiswa yang kamu inginkan</span>
-                        <div id="multiselect-selected" style="display:flex;flex-wrap:wrap;gap:6px;margin-left:8px;"></div>
-                        <svg style="margin-left:auto;pointer-events:none;" width="18" height="18" viewBox="0 0 24 24">
+                        <div id="multiselect-selected" style="display:flex;flex-wrap:wrap;gap:6px;margin-left:8px;">
+                        </div>
+                        <svg style="margin-left:auto;pointer-events:none;" width="18" height="18"
+                            viewBox="0 0 24 24">
                             <path fill="#888" d="M7 10l5 5 5-5z" />
                         </svg>
                     </div>
@@ -510,8 +512,7 @@
                     <div
                         style="background:#fff;border-radius:10px;box-shadow:0 4px 24px rgba(0,0,0,0.18);padding:24px 20px;min-width:320px;max-width:95vw;">
                         <div style="font-weight:600;font-size:18px;margin-bottom:12px;">Pilih Mahasiswa</div>
-                        <div
-                            style="padding:8px 0;border-bottom:1px solid #eee;margin-bottom:10px;">
+                        <div style="padding:8px 0;border-bottom:1px solid #eee;margin-bottom:10px;">
                             <label style="cursor:pointer;">
                                 <input type="checkbox" id="selectAllMahasiswa" style="margin-right:6px;">
                                 <strong>Pilih Semua</strong>
@@ -634,7 +635,8 @@
             mahasiswaOptions.forEach(opt => {
                 opt.checked = selectedMahasiswa.includes(opt.value);
             });
-            selectAllMahasiswa.checked = mahasiswaOptions.length > 0 && Array.from(mahasiswaOptions).every(opt => opt.checked);
+            selectAllMahasiswa.checked = mahasiswaOptions.length > 0 && Array.from(mahasiswaOptions).every(opt =>
+                opt.checked);
         });
 
         // Tutup modal jika klik batal
@@ -694,7 +696,30 @@
                 multiselectModal.classList.add('hidden');
             }
         });
+
+        // Popup edit universal (akan tetap muncul walau field berbeda)
+        function openEditPopupGeneric(data) {
+            if (document.getElementById('editNama')) document.getElementById('editNama').value = data.nama || '';
+            if (document.getElementById('editTahun')) document.getElementById('editTahun').value = data.tahun || '';
+            if (document.getElementById('editProdi')) document.getElementById('editProdi').value = data.prodi || '';
+            document.getElementById('modalEditData').style.display = 'block';
+        }
+
+        // Binding tombol edit pada detail kelas
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-edit')) {
+                // Data bisa diambil dari elemen, atau hardcode dulu
+                openEditPopupGeneric({
+                    nama: 'TI SI 2023 (A)',
+                    tahun: '2023/2024',
+                    prodi: 'Sistem Informatika'
+                });
+            }
+        });
     </script>
+
+    @include('edit')
+
 </body>
 
 </html>
