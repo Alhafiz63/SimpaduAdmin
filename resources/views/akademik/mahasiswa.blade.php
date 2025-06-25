@@ -372,6 +372,8 @@
             });
         });
     </script>
+
+    @include('edit')
 </body>
 
 </html>

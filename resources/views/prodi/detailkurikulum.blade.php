@@ -800,7 +800,33 @@
         modalTambahMatkulBaru.addEventListener('click', function(e) {
             if (e.target === modalTambahMatkulBaru) modalTambahMatkulBaru.style.display = 'none';
         });
+
+        // Binding tombol edit pada daftar matkul (agar popup edit muncul)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-edit')) {
+                // Ambil data dari elemen matkul-row
+                const matkulRow = e.target.closest('.matkul-row');
+                const nama = matkulRow.querySelector('.matkul-title')?.textContent.trim() || '';
+                const kodeSemester = matkulRow.querySelector('.matkul-kode-semester')?.textContent.trim() || '';
+                // Pisahkan kode dan semester jika perlu
+                let kode = '',
+                    semester = '';
+                const match = kodeSemester.match(/^([A-Z0-9]+)\s*-\s*Semester\s*(\d+)/i);
+                if (match) {
+                    kode = match[1];
+                    semester = match[2];
+                }
+                // Panggil popup edit universal
+                openEditPopupGeneric({
+                    nama: nama,
+                    nim: kode, // backend bisa ganti field sesuai kebutuhan
+                    semester: semester
+                });
+            }
+        });
     </script>
+
+    @include('edit')
 </body>
 
 </html>

@@ -694,7 +694,27 @@
                 checkAll.checked = Array.from(rowChecks).every(cb => cb.checked);
             });
         });
+
+        // Binding tombol edit pada tabel presensi dosen (agar popup edit muncul)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-edit')) {
+                const row = e.target.closest('tr');
+                // Ambil data dari kolom tabel presensi dosen
+                const kelas = row.cells[1]?.textContent.trim() || '';
+                const matkul = row.cells[2]?.textContent.trim() || '';
+                const pegawai = row.cells[3]?.textContent.trim() || '';
+                const pertemuan = row.cells[4]?.textContent.trim() || '';
+                openEditPopupGeneric({
+                    kelas: kelas,
+                    matkul: matkul,
+                    pegawai: pegawai,
+                    pertemuan: pertemuan
+                });
+            }
+        });
     </script>
+
+    @include('edit')
 </body>
 
 </html>

@@ -734,7 +734,29 @@
                 checkAll.checked = Array.from(rowChecks).every(cb => cb.checked);
             });
         });
+
+        // Binding tombol edit pada tabel dosen (agar popup edit muncul)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-edit')) {
+                const row = e.target.closest('tr');
+                // Ambil data dari kolom tabel dosen
+                const matkul = row.cells[1]?.textContent.trim() || '';
+                const pegawai = row.cells[2]?.textContent.trim() || '';
+                const kurikulum = row.cells[3]?.textContent.trim() || '';
+                const kelas = row.cells[4]?.textContent.trim() || '';
+                const ruang = row.cells[5]?.textContent.trim() || '';
+                openEditPopupGeneric({
+                    matkul: matkul,
+                    pegawai: pegawai,
+                    kurikulum: kurikulum,
+                    kelas: kelas,
+                    ruang: ruang
+                });
+            }
+        });
     </script>
+
+    @include('edit')
 </body>
 
 </html>
