@@ -28,13 +28,13 @@ class HttpService
         return $response->ok() ? $response->json() : null;
     }
 
-    public function getMahasiswaById($id)
+    public function getMahasiswaByNIM($nim)
     {
         $token = config('services.tokens.mahasiswa_service');
 
         $response = Http::withToken($token)
             ->withHeaders(['Origin' => $this->origin])
-            ->get("{$this->mahasiswaServiceUrl}/mahasiswa/{$id}");
+            ->get("{$this->mahasiswaServiceUrl}/mahasiswa/{$nim}");
 
         return $response->ok() ? $response->json() : null;
     }

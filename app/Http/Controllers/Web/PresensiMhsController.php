@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Models\PresensiMhs;
+use App\Http\Controllers\Controller;
 
 class PresensiMhsController extends Controller
 {

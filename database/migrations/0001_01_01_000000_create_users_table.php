@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->enum('role', ['Super Admin', 'Admin Akademik', 'Admin Prodi', 'Admin Pegawai', 'Dosen', 'Mahasiswa'])->default('Mahasiswa');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->hash();
             $table->rememberToken();
             $table->timestamps();
         });

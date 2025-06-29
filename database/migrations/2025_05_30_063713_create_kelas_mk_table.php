@@ -16,6 +16,10 @@ return new class extends Migration
             $table->integer('id_kelas');
             $table->integer('id_kurikulum')
                 ->comment('ID Kurikulum yang digunakan untuk kelas ini');
+            $table->integer('id_pegawai')
+                ->comment('ID Dosen yang mengajar kelas ini');
+            $table->string('nama_pengajar', 100)
+                ->comment('Nama Dosen yang mengajar kelas ini');
             $table->integer('id_ruang');
             $table->timestamps();
             

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
 use Illuminate\Http\Request;
 use App\Models\Kelas;
+use App\Http\Controllers\Controller;
 
 class KelasController extends Controller
 {
@@ -12,10 +13,23 @@ class KelasController extends Controller
         return response()->json(Kelas::all());
     }
 
+    public function show($id)
+    {
+        $data = Kelas::find($id);
+
+        if (! $data) {
+            return response()->json(['message' => 'Data Kelas Tidak Ditemukan.'], 404);
+        }
+
+        return response()->json($data);
+    }
+
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'id_tahun_akd' => 'required|char|5|exists:tahun_akademik,id',
+            'id_prodi' => 'required|integer|exists:prodi,id',
+            'nama' => 'required|string|max:50',
         ]);
 
         $data = Kelas::create($validated);
@@ -28,16 +42,16 @@ class KelasController extends Controller
         $data = Kelas::find($id);
 
         if (! $data) {
-            return response()->json(['message' => 'Kelas not found.'], 404);
+            return response()->json(['message' => 'Data Kelas Tidak Ditemukan.'], 404);
         }
 
         $validated = $request->validate([
-            'nama' => 'required|string|max:255',
+            'nama' => 'required|string|max:50',
         ]);
 
         $data->update($validated);
 
-        return response()->json(['message' => 'Kelas updated successfully.', 'data' => $data]);
+        return response()->json(['message' => 'Data Kelas Berhasil Diperbarui.', 'data' => $data]);
     }
 
     public function destroy($id)
@@ -45,11 +59,11 @@ class KelasController extends Controller
         $data = Kelas::find($id);
 
         if (! $data) {
-            return response()->json(['message' => 'Kelas not found.'], 404);
+            return response()->json(['message' => 'Data Kelas Tidak Ditemukan.'], 404);
         }
 
         $data->delete();
 
-        return response()->json(['message' => 'Kelas deleted successfully.']);
+        return response()->json(['message' => 'Data Kelas Berhasil Dihapus.']);
     }
 }

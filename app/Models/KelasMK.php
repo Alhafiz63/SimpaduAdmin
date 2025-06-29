@@ -12,6 +12,8 @@ class KelasMK extends Model
     protected $fillable = [
         'id_kelas',
         'id_kurikulum',
+        'id_pegawai',
+        'nama_pengajar',
         'id_ruang'
     ];
     // add guaded

@@ -13,7 +13,7 @@ class CheckRole
         $user = $request->user();
 
         if (! $user || ! in_array($user->role, $roles)) {
-            return response()->json(['message' => 'Maaf anda tidak memiliki akses'], 403);
+            abort(403, 'Akses ditolak.');;
         }
 
         return $next($request);

@@ -19,15 +19,5 @@ class DatabaseSeeder extends Seeder
             'name' => 'admin',
             'email' => 'admin@admin.com',
         ]);
-
-
-        //call BookSeeder
-        $this->call(
-            [
-                BookSeeder::class,
-                PostSeeder::class,
-                ContactSeeder::class,
-            ]
-        );
     }
 }

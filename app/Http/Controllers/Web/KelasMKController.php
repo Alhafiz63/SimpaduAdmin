@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 use App\Models\KelasMk;
+use App\Http\Controllers\Controller;
 
 class KelasMkController extends Controller
 {

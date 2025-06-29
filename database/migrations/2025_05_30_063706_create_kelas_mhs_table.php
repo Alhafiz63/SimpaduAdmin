@@ -16,7 +16,8 @@ return new class extends Migration
             $table->integer('id_kelas');
             $table->tinyInteger('no_absen')->comment('Nomor urut absen dalam kelas');
             $table->char('nim', 10)->comment('Nomor Induk Mahasiswa');
-            $table->string('id_tahun_akd', 5);
+            $table->string('nama', 100)->comment('Nama Mahasiswa');
+            $table->char('id_tahun_akd', 5);
             $table->tinyInteger('smt');
             $table->char('id_status_mhs', 1);
             $table->timestamps();

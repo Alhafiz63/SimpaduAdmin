@@ -9,8 +9,14 @@ class VerifyInternalToken
 {
     public function handle(Request $request, Closure $next)
     {
-        $origin = $request->header('Origin');
+        $origin = parse_url($request->headers->get('origin'), PHP_URL_HOST)
+            ?? parse_url($request->header('X-App-Origin'), PHP_URL_HOST)
+            ?? $request->getHost(); // fallback
         $token = $request->bearerToken();
+
+        if (!$origin || !$token) {
+        return response()->json(['message' => 'Unauthorized - Missing origin or token'], 401);
+    }
 
         $allowedTokens = [
             config('services.admin_origin') => null, // Jika request dari admin sendiri
@@ -18,9 +24,9 @@ class VerifyInternalToken
             config('services.urls.mahasiswa_service') => config('services.tokens.mahasiswa_service'),
         ];
 
-        foreach ($allowedTokens as $domain => $validToken) {
-            if (str_contains($origin, parse_url($domain, PHP_URL_HOST)) && $token === $validToken) {
-                return $next($request);
+        foreach ($allowedTokens as $allowedHost => $validToken) {
+            if (str_contains($origin, $allowedHost) && ($validToken === null || $token === $validToken)) {
+            return $next($request);
             }
         }
 

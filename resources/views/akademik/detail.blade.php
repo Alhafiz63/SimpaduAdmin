@@ -333,8 +333,7 @@
     <aside>
         <div class="user-card">
             <img src="/images/admin.png" alt="Admin Akademik">
-            <strong>Admin Akademik</strong>
-            <small>adminakademik@example.com</small>
+            <span class="nav-link">Welcome, {{ Auth::user()->name }}</span>
         </div>
         <ul class="nav-menu">
             <li>

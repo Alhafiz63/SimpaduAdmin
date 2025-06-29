@@ -25,7 +25,10 @@ class CheckDomainRoleAccess
         }
 
         // Ambil domain asal dari header (Origin)
-        $origin = parse_url($request->headers->get('origin'), PHP_URL_HOST);
+        $origin = parse_url($request->headers->get('origin'), PHP_URL_HOST)
+        ?? parse_url($request->header('X-App-Origin'), PHP_URL_HOST)
+        ?? $request->getHost(); // tambahkan ini
+
 
         if (!$origin) {
             return response()->json(['message' => 'Origin not provided.'], 403);

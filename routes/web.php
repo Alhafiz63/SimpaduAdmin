@@ -1,22 +1,44 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/login', function () {
-    return view('auth.login');
+Route::redirect('/', '/login');
+
+Route::get('/login', [LoginController::class, 'loginView'])->name('login');
+Route::post('/login', [LoginController::class, 'login'])->name('login');
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+Route::prefix('superadmin')->group(function () {
+    Route::get('/registrasi', [RegisterController::class, 'showRegistrationForm']);
+    Route::post('/registrasi', [RegisterController::class, 'register'])->name('superadmin.registrasi');
+    
 });
 
-Route::get('/', function () {
-    return view('testing');
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 route::prefix('prodi')->group(function () {
 Route::get('/', function () {
-    return view('prodi.dashboard');
+    return view('prodi.index');
 });
 
 Route::get('/nilai', function () {
