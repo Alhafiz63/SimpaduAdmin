@@ -318,7 +318,7 @@
             background: #ffffff;
         }
 
-       .pagination {
+        .pagination {
             text-align: right;
             padding: 1rem 0.5rem;
         }
@@ -674,7 +674,27 @@
                 checkAll.checked = Array.from(rowChecks).every(cb => cb.checked);
             });
         });
+
+        // Binding tombol edit pada tabel matakuliah (agar popup edit muncul)
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.btn-edit')) {
+                const row = e.target.closest('tr');
+                // Ambil data dari kolom tabel
+                const nama = row.children[1]?.textContent.trim() || '';
+                const nim = row.children[2]?.textContent.trim() || '';
+                const prodi = row.children[3]?.textContent.trim() || '';
+                const semester = row.children[4]?.textContent.trim() || '';
+                openEditPopupGeneric({
+                    nama: nama,
+                    nim: nim,
+                    prodi: prodi,
+                    semester: semester
+                });
+            }
+        });
     </script>
+
+    @include('edit')
 </body>
 
 </html>
