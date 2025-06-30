@@ -517,13 +517,13 @@
                 </a>
             </li>
             <li>
-                <a href="prodi/nilai">
+                <a href="/prodi/nilai">
                     <img src="/images/report.png" alt="Nilai">
                     Nilai
                 </a>
             </li>
             <li>
-                <a href="prodi/kurikulum">
+                <a href="/prodi/kurikulum">
                     <img src="/images/report-analytics.png" alt="Kurikulum">
                     Kurikulum
                 </a>
@@ -538,14 +538,14 @@
                 </a>
                 <ul class="submenu">
                     <li>
-                        <a href="prodi/matkul" class="{{ request()->is('buat-mata-kuliah') ? 'active' : '' }}">
+                        <a href="/prodi/matkul" class="{{ request()->is('buat-mata-kuliah') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Buat Mata Kuliah
                         </a>
                     </li>
                     <li>
-                        <a href="prodi/dosen" class="{{ request()->is('dosen') ? 'active' : '' }}">
+                        <a href="/prodi/dosen" class="{{ request()->is('dosen') ? 'active' : '' }}">
                             <img src="/images/arrows-up-right.png" alt="" class="submenu-arrow default-arrow">
                             <img src="/images/arrow-ramp-right-3.png" alt="" class="submenu-arrow active-arrow">
                             Pilih Dosen
